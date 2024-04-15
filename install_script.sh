@@ -14,14 +14,12 @@ cd /tmp/lua-5.4.6
 make linux test
 make install
 
-# Download Nginx
 cd /tmp
 #wget http://nginx.org/download/nginx-1.17.0.tar.gz -O nginx.tar.gz
 wget https://nginx.org/download/nginx-1.25.4.tar.gz -O /tmp/nginx.tar.gz
 mkdir /tmp/nginx
 tar xf /tmp/nginx.tar.gz -C nginx --strip-components=1
 cd /tmp
-# Download Nginx modules
 wget https://github.com/simpl/ngx_devel_kit/archive/v0.3.3.tar.gz -O /tmp/ngx_devel_kit.tar.gz 
 mkdir /tmp/ngx_devel_kit
 tar xf /tmp/ngx_devel_kit.tar.gz -C /tmp/ngx_devel_kit --strip-components=1
@@ -67,9 +65,10 @@ tar xf /tmp/lua-resty-lrucache.tar.gz -C /tmp/lua-resty-lrucache --strip-compone
 cd /tmp/lua-resty-lrucache
 make install PREFIX=/opt/nginx
 
+cp /tmp/nginx-s3-upload-script/nginx.conf /etc/nginx/nginx.conf
+
 cd /tmp/nginx
-#./configure --sbin-path=/usr/local/sbin \
-./configure --prefix=/opt/nginx
+./configure --prefix=/opt/nginx \
                 --conf-path=/etc/nginx/nginx.conf \
                 --pid-path=/var/run/nginx.pid \
                 --error-log-path=/var/log/nginx/error.log \
@@ -86,9 +85,4 @@ cd /tmp/nginx
 make -j2
 make install
 
-# Apply Nginx config
-cp /tmp/nginx-s3-upload-script/nginx.conf /etc/nginx/nginx.conf
 /opt/nginx/sbin/nginx -c /etc/nginx/nginx.conf
-
-
-
