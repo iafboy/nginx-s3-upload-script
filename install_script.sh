@@ -5,7 +5,7 @@ apt-get install -y wget tar gcc libpcre3-dev zlib1g-dev make libssl-dev libpcre3
 
 
 cd /tmp
-git clone https://github.com/jamescmartinez/nginx-s3-upload.git
+git clone https://github.com/iafboy/nginx-s3-upload-script.git
 
 cd /tmp
 wget https://www.lua.org/ftp/lua-5.4.6.tar.gz
@@ -87,7 +87,7 @@ make -j2
 make install
 
 # Apply Nginx config
-cp /tmp/nginx-s3-upload/config/nginx.conf /etc/nginx/nginx.conf
+cp /tmp/nginx-s3-upload-script/nginx.conf /etc/nginx/nginx.conf
 /opt/nginx/sbin/nginx -c /etc/nginx/nginx.conf
 
 
