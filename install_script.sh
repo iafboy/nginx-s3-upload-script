@@ -86,3 +86,11 @@ make -j2
 make install
 
 /opt/nginx/sbin/nginx -c /etc/nginx/nginx.conf
+
+cd /tmp
+git clone https://github.com/ledgetech/lua-resty-http
+cp /tmp/cd lua-resty-http/lib/resty/* /usr/local/openresty/lualib/resty/
+git clone https://github.com/jkeys089/lua-resty-hmac.git
+cp /tmp/lua-resty-hmac/lib/resty/* /usr/local/openresty/lualib/resty/
+
+/opt/nginx/sbin/nginx -t -c /etc/nginx/nginx.conf
