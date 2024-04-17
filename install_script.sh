@@ -93,4 +93,5 @@ cp /tmp/cd lua-resty-http/lib/resty/* /usr/local/openresty/lualib/resty/
 git clone https://github.com/jkeys089/lua-resty-hmac.git
 cp /tmp/lua-resty-hmac/lib/resty/* /usr/local/openresty/lualib/resty/
 
+cp -R  /usr/local/openresty/lualib/resty/* /opt/nginx/lib/lua/resty/
 /opt/nginx/sbin/nginx -t -c /etc/nginx/nginx.conf
